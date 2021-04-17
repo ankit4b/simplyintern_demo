@@ -1,0 +1,301 @@
+{% load static %}
+<html>
+  <head>
+    <title>Company Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href=" {% static 'css/Company.css' %}" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div id="header">
+      <nav class="navbar navbar-light" style="border-bottom: 1px solid #aaa">
+        <a
+          class="navbar-brand"
+          href="#"
+          style="
+            font-size: 25;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+          "
+          >SimplyIntern</a
+        >
+      </nav>
+
+
+    {% if messages %} {% for message in messages %}
+    <div class="alert info">
+      <div class="closebtn">&times;</div>
+      {{ message }}
+    </div>
+    {% endfor %} {% endif %}
+
+
+      <section class="d-flex align-items-center">
+        <div class="containerBox">
+          <div class="user signinBx">
+            <div class="imgBx">
+              <img src="{% static 'images/lock.jpg'%} " />
+            </div>
+            <div class="formBx">
+              <form
+                name="signinform"
+                method="POST"
+                onsubmit="return validateForm()"
+                enctype="multipart/form-data"
+              >
+               {% csrf_token %}
+                <h2>Sign In</h2>
+                <input name="formtype" type="hidden" value="signinform" />
+                <input name='username' type="email" placeholder="email id" />
+                <input name='password' type="Password" placeholder="Password" />
+                <input type="Submit" value="Login" />
+                <p class="signup">
+                  don't have an account?
+                  <a href="#" onclick="toggleForm();"> Sign up</a>
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <div class="user signupBx">
+            <div class="formBx">
+              <form
+                name="signupform"
+                method="POST"
+                onsubmit="return validateForm()"
+                enctype="multipart/form-data"
+              >
+               {% csrf_token %}
+                <h2>Create an account</h2>
+                <input name="formtype" type="hidden" value="signupform" />
+                <input name='name' type="text" placeholder="Company name" />
+                <input name='email' type="email" placeholder="Email Address" />
+                <input name='password' type="Password" placeholder="create Password" />
+                <input name='confpassword' type="Password" placeholder="Confirm Password" />
+                <input type="Submit" value="Sign Up" />
+                <p class="signup">
+                  Already have an account?
+                  <a href="#" onclick="toggleForm();"> Sign in</a>
+                </p>
+              </form>
+            </div>
+            <div class="imgBx">
+              <img
+                src="{% static 'images/pexels-charlotte-may-5825395.jpg'%} "
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------- Steps ------------------- -->
+
+    <section id="steps" class="mt-5">
+      <div class="container">
+        <h2 style="color: #333" class="text-center mb-4">
+          Hire interns in 3 simple steps
+        </h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="text-center">
+              <img src="{% static 'images/register.jpeg'%} " />
+              <h4>1. Register</h4>
+              <p>Get started by creating your account</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center">
+              <img src="{% static 'images/post.jpeg'%}" />
+              <h4>2. Post</h4>
+              <p>Post internships for any profile and location</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center">
+              <img src="{% static 'images/hire.jpeg'%} " />
+              <h4>3. Hire</h4>
+              <p>Screen and hire at your fingertips</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------- TESTIMONIAL ---------------- -->
+
+    <section id="testimonials">
+      <div class="container">
+        <h1 class="text-center mb-5">Experience of Companies</h1>
+        <div class="row">
+          <div class="col-md-4 wow animate__fadeInLeft" data-wow-duration="2s">
+            <p class="review">
+              " SimpleHired is one of the best web resources which helped me. I
+              am still looking for a six month internship and your help is a big
+              boon. I am really grateful for this awesome work. Thanks"
+              <br />
+              <i class="fa fa-twitter"></i>
+              <span>@wipro</span>
+            </p>
+            <img src="{% static 'images/wipro.jpg'%} " />
+          </div>
+          <div class="col-md-4 middle wow fadeInUp" data-wow-duration="2s">
+            <p class="review">
+              "Thank you SimpleHired. In an age when it is easier to secure a
+              core job than to secure a core internship (for electrical guys),
+              you really helped me in getting a second core internship in a span
+              of 6 months. Thanks again."
+              <br />
+              <i class="fa fa-twitter"></i>
+              <span>@Accenture</span>
+            </p>
+            <img src="{% static 'images/Accenture-acn-mobile-logo-2.png'%} " />
+          </div>
+          <div class="col-md-4 wow fadeInRight" data-wow-duration="2s">
+            <p class="review">
+              "I am a UG student at University of Delhi. I was browsing through
+              your site and found it very useful for college students. Thanks so
+              much for such a wonderful website!"
+              <br />
+              <i class="fa fa-twitter"></i>
+              <span>@Tcs</span>
+            </p>
+            <img src="{% static 'images/tata.png'%} " />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- FOOTER SECTION -------------------- -->
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- <img src="images/logo.png" class="footer-logo"> -->
+            <h2>SimplyIntern</h2>
+            <p style="text-align: justify">
+              SimplyIntern helps thousands of students find great internships
+              and be a ladder in their success.
+            </p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Features</h1>
+            <p>Certification</p>
+            <p>Free Apply</p>
+            <p>Flexible Time</p>
+            <p>Jobs for freshers</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Quick Contact</h1>
+            <p>
+              <i class="fa fa-phone-square"></i>
+              +91 7377515257
+            </p>
+            <p>
+              <i class="fa fa-envelope"></i>
+              ankit4b@gmail.com
+            </p>
+            <p>
+              <i class="fa fa-home"></i>
+              Tulsinagar, Balangir
+            </p>
+            <p class="city">Odisha, India</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Follow Us On</h1>
+            <p>
+              <i class="fa fa-facebook-official"></i>
+              Facebook
+            </p>
+            <p>
+              <i class="fa fa-youtube-play"></i>
+              Youtube
+            </p>
+            <p>
+              <i class="fa fa-linkedin"></i>
+              Linkedin
+            </p>
+            <p>
+              <i class="fa fa-twitter"></i>
+              Twitter
+            </p>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">
+          Made with <i class="fa fa-heart-o"></i> by Ankit Sahu
+        </p>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+{% comment %} form validate {% endcomment %}
+    function validateForm() {
+        var x = document.forms["regform"]["name"].value;
+        var y = document.forms["regform"]["gender"].value;
+        var p1 = document.forms["regform"]["password"].value;
+        var p2 = document.forms["regform"]["confpassword"].value;
+        if (x == "") {
+          alert("Name must be filled out");
+          return false;
+        } else if (y == "") {
+          alert("gender must be filled out");
+          return false;
+        }
+
+        if (p1.length < 8) {
+          alert("Length of Password must be Greater than 8 ");
+          return false;
+        }
+        if (p2.length < 8) {
+          alert("Length of Conform Password must be Greater than 8 ");
+          return false;
+        }
+
+        if (p1 != p2) {
+          alert("Both Password should be Comformed.......");
+          return false;
+        }
+      }
+
+
+      function toggleForm() {
+        var containerBox = document.querySelector(".containerBox");
+        containerBox.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

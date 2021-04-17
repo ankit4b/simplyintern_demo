@@ -1,0 +1,412 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>
+            Student Section
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/StudentProfile.css' %}" >
+
+         <!-- Bootstrap -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+         <!-- Font-awesome -->
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body >
+<section class="py-1 fixed-top" style="background-color: rgb(1, 23, 51)">
+      <nav class="navbar navbar-expand-sm navbar-light mx-4">
+        <!-- Brand/logo -->
+        <a
+          class="navbar-brand"
+          href="{% url 'internships' %}"
+          style="
+            font-size: 25px;
+            font-weight: 400;
+            color: #e7e9ee;
+            letter-spacing: 2px;
+            margin-left: 10px;
+            text-transform: uppercase;
+          "
+          >SimplyIntern</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars" aria-hidden="true" style="color: #fff;"></i>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'internships' %}">
+                <i class="fa fa-info" aria-hidden="true"></i> <span style="margin-left: 3px;">Internships</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">
+                <i class="fa fa-pie-chart" aria-hidden="true"></i> <span style="margin-left: 3px;">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">
+                <i class="fa fa-user" aria-hidden="true"></i> Hey, {{student.name}}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="btn" href="/logout" style="padding: 5px; background-color: rgb(212, 51, 51); color: #fff; font-weight: 600; border-radius: 5px; font-size: 13px; margin-top: 5px;">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+
+        <!-- ----------- PROFILE SECTION ---------------  -->
+        <div class="container"  style="margin-top: 100px;">
+            <div class="row d-flex justify-content-center align-items-center" id="contact_info" >
+                <div class="col-md-4 text-center">
+                    <img src="/media/{{resume.pic}}" style="width: 200px; height: 200px; border-radius: 10px;">
+                </div>
+                <div class="col-md-8 pt-4">
+                    <div style="margin-top: 5px;">
+                        <div style="padding: 10px;">
+                            <a href="profileEdit" style="text-decoration: none;"><i class="fa fa-edit" aria-hidden="true" style="float: right; font-size: 20px; color: #7737ec;"></i></a>
+
+                            <h4 style="font-size: 28px; color: rgb(66, 66, 66); letter-spacing: 1px; margin-left: 15px; text-align: center;">
+                                {{student.name}}
+                            </h4>
+
+                        </div>
+
+                        <p style="color: #444; font-size: 17px;">
+                            <i class="fa fa-university mx-1"></i> Student at {{resume.college}}
+                        </p>
+                        <p style="color: #666; font-size: 14px;">
+                            <i class="fa Fa-map-marker mx-2"></i> {{resume.address}}
+                        </p>
+                        <p style="color: #666; font-size: 14px;">
+                            <i class="fa Fa-mobile mx-2"></i> {{resume.mob}}
+                        </p>
+                        <p style="color: #666; font-size: 14px;">
+                            <i class="fa Fa-envelope mx-2"></i> {{student.email}}
+                        </p>
+
+                    </div>
+
+                    <hr class="w-75" />
+
+                    <div class="w-75">
+                            <h5 class="title">
+                                Skills
+                            </h5>
+                            <div class="p-2" >
+                                <div id="skills">
+                                        <p style="display: inline; font-weight: 500; padding: 10px;">
+                                            {{resume.skills}}
+                                        </p>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="w-75">
+                            <h5 class="title" style="display: inline;">
+                                Resume :
+                            </h5>
+                                <a href="{{ resume.resume_file.url }}">View Resume </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- ------------- EDUCATION ------------  -->
+
+            <div class="mt-4" style="width: 85%; margin: auto;">
+                <h3 class="title">
+                    Current Education
+                </h3>
+                <hr>
+                <div class="p-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{%static './images/cet.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                College of Engineering and Technology, Bhubaneswar
+                            </h6>
+                            <p>
+                                Master of Computer Applications
+                            </p>
+                            <p style=" font-size: 15;">
+                                <span style="font-weight: bold;">Expected graduation : </span> <span>2018 – 2021</span>
+                            </p>
+                            <p >
+                                <span style="font-weight: bold;">CGPA : </span> <span>9.05</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ------------- INTERNSHIP EXPERIENCE ------------  -->
+
+            <div class="mt-5" style="width: 85%; margin: auto;">
+                <h3 class="title">
+                    Internship Experience
+                </h3>
+                <hr>
+                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{% static './images/wipro.jpg' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                The SmartBridge internship
+                            </h6>
+                            <p>
+                                May 2020 - June 2020
+                            </p>
+                            <p style="font-weight: bold; font-size: 15;">
+                                Dates attended or expected graduation
+                            </p>
+                            <p>
+                                2018 – 2021
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{% static './images/Accenture-acn-mobile-logo-2.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                The SmartBridge internship
+                            </h6>
+                            <p>
+                                May 2020 - June 2020
+                            </p>
+                            <p style="font-weight: bold; font-size: 15;">
+                                Dates attended or expected graduation
+                            </p>
+                            <p>
+                                2018 – 2021
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{% static './images/tata.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                The SmartBridge internship
+                            </h6>
+                            <p>
+                                May 2020 - June 2020
+                            </p>
+                            <p style="font-weight: bold; font-size: 15;">
+                                Dates attended or expected graduation
+                            </p>
+                            <p>
+                                2018 – 2021
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ------------- Certification EXPERIENCE ------------  -->
+
+            <div class="mt-4" style="width: 85%; margin: auto; ">
+                <h3 class="title">
+                    Certification
+                </h3>
+                <hr>
+                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="certification" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{% static './images/wipro.jpg' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                ProblemSolving (Basic)
+                            </h6>
+                            <p>
+                                HackerRank
+                            </p>
+                            <p>
+                                Issued Fab 2021 - No Expiration Date
+                            </p>
+                            <p class="color: #555">
+                                Credential ID : UC-57854fd513-b4654-456-sa54654
+                            </p>
+                            <a href="#">
+                                See Credential
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="certification" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{%static './images/Accenture-acn-mobile-logo-2.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                ProblemSolving (Basic)
+                            </h6>
+                            <p>
+                                HackerRank
+                            </p>
+                            <p>
+                                Issued Fab 2021 - No Expiration Date
+                            </p>
+                            <p class="color: #555">
+                                Credential ID : UC-57854fd513-b4654-456-sa54654
+                            </p>
+                            <a href="#">
+                                See Credential
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
+                    <div class="row">
+                        <div id="certification" class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="{% static './images/tata.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 style="font-size: large; font-weight: bold;" >
+                                ProblemSolving (Basic)
+                            </h6>
+                            <p>
+                                HackerRank
+                            </p>
+                            <p>
+                                Issued Fab 2021 - No Expiration Date
+                            </p>
+                            <p class="color: #555">
+                                Credential ID : UC-57854fd513-b4654-456-sa54654
+                            </p>
+                            <a href="#">
+                                See Credential
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <!-- -------------------- FOOTER SECTION -------------------- -->
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- <img src="images/logo.png" class="footer-logo"> -->
+                    <h2>
+                        SimpleHired
+                    </h2>
+                    <p style="text-align: justify;">
+                    SimplyHired helps thousands of students find great internships
+                    and be a ladder in their success.
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h1>
+                        Features
+                    </h1>
+                    <p>
+                        Certification
+                    </p>
+                    <p>
+                        Free Apply
+                    </p>
+                    <p>
+                        Flexible Time
+                    </p>
+                    <p>
+                        Jobs for freshers
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h1>
+                        Quick Contact
+                    </h1>
+                    <p> <i class="fa fa-phone-square"></i>
+                        +91 7377515257
+                    </p>
+                    <p> <i class="fa fa-envelope"></i>
+                        ankit4b@gmail.com
+                    </p>
+                    <p> <i class="fa fa-home"></i>
+                        Tulsinagar, Balangir
+                    </p>
+                    <p class="city">
+                        Odisha, India
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h1>
+                        Follow Us On
+                    </h1>
+                    <p> <i class="fa fa-facebook-official"></i>
+                        Facebook
+                    </p>
+                    <p> <i class="fa fa-youtube-play"></i>
+                        Youtube
+                    </p>
+                    <p> <i class="fa fa-linkedin"></i>
+                        Linkedin
+                    </p> 
+                    <p> <i class="fa fa-twitter"></i>
+                        Twitter
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">
+                Made with <i class="fa fa-heart-o"></i> by Ankit Sahu
+            </p>
+        </div>
+    </section>
+
+
+
+    </body>
+    </html>

@@ -1,0 +1,332 @@
+{% load static %}
+<html>
+  <head>
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/CompanyInternshipForm.css'%}" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+  </head>
+
+  <body>
+ <section
+      class="py-1 fixed-top"
+      style="background-image: linear-gradient(125deg, #a72879, #064497)"
+    >
+      <nav class="navbar navbar-expand-sm navbar-light mx-4">
+        <!-- Brand/logo -->
+        <a
+          class="navbar-brand"
+          href="{% url 'home' %}"
+          style="
+            font-size: 25px;
+            font-weight: 600;
+            color: #e7e9ee;
+            letter-spacing: 2px;
+            margin-left: 10px;
+            text-transform: uppercase;
+          "
+          >SimplyIntern</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars" aria-hidden="true" style="color: #fff;"></i>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'new-post' %}">
+                <i class="fa fa-info" aria-hidden="true"></i> <span style="margin-left: 3px;">Post New Internship</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'company-profile' %}">
+                <i class="fa fa-user" aria-hidden="true"></i> <span style="margin-left: 3px;">Hey, {{user.company.name}}</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="btn" href="/logout" style="padding: 5px; background-color: rgb(212, 51, 51); color: #fff; font-weight: 600; border-radius: 5px; font-size: 13px; margin-top: 5px;">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+    <!-- ----------------- FORM ---------------  -->
+
+    <section class="get_in_touch" style="margin-top: 100px">
+      <h1 class="title">New Internship</h1>
+
+      <div class="container">
+        <div class="contact-form row">
+          <div class="form-field col-lg-6">
+            <lable for="name" class="label">Internship title</lable>
+            <input
+              name="title"
+              id="ititle"
+              class="input-text"
+              type="text"
+              name=""
+            />
+          </div>
+                    <div class="form-field col-lg-6">
+                        <lable for="openings" class="label">Number of openings</lable>
+                        <input id="openings" class="input-text" type="number" name="" />
+                    </div>
+
+                    <div class="form-field col-lg-6">
+                        <lable for="type" class="label">Internship type</lable>
+                        <select name="Type" class="input-text w-100" style="color: #5543ca; font-size: 17px;" >
+                            <option value="Work from Home">Work from Home</option>
+                            <option value="In office">In office</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field col-lg-6">
+                        <lable for="duration" class="label">Duration</lable>
+                        <select name="duration" class="input-text w-100" style="color: #5543ca; font-size: 17px;">
+                            <option value="1 month">1 month</option>
+                            <option value="2 months">2 months</option>
+                            <option value="3 months">3 months</option>
+                            <option value="4 months">4 months</option>
+                            <option value="5 months">5 months</option>
+                            <option value="6 months">6 months</option>
+                            <option value="12 months">12 months</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field col-lg-6">
+                        <lable for="stipend" class="label">stipend (in Rupees)</lable>
+                        <input id="istipend" class="input-text" type="number" name="" />
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <lable for="company" class="label">Apply By</lable>
+                        <input id="company" class="input-text" type="Date" name="" style="text-align: right; color: #5543ca;" />
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <lable for="perks" class="label">Perks</lable>
+                        <input id="iperks" class="input-text" type="text" name="" />
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <lable for="place" class="label">Place</lable>
+                        <input id="iplace" class="input-text" type="text" name="" />
+                    </div>
+
+          <div class="form-field col-lg-12">
+            <lable style="color: #5543ca; font-size: 18px">Skills</lable>
+
+            <div class="form-group">
+              <select
+                class="mul-select"
+                multiple="true"
+                style="width: 100%"
+                id="myselect"
+              >
+                <option value="Python">Python</option>
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value=".Net">.Net</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="Bootstrap">Bootstrap</option>
+                <option value="React JS">React JS</option>
+                <option value="Angular JS">Angular JS</option>
+                <option value="Veu JS">Veu JS</option>
+                <option value="React Native">React Native</option>
+                <option value="Flutter">Flutter</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field col-lg-12">
+            <lable style="color: #5543ca; font-size: 18px"
+              >About the internship (Roles and Responsibility)</lable
+            >
+            <textarea
+              id="iabout_internship"
+              type="text"
+              name=""
+              rows="6"
+              style="width: 100%; border-color: #5543ca"
+            ></textarea>
+          </div>
+          <div class="form-field col-lg-12">
+            <lable style="color: #5543ca; font-size: 18px">Who can Apply</lable>
+            <textarea
+              id="iwho_can_apply"
+              type="text"
+              name=""
+              rows="6"
+              style="width: 100%; border-color: #5543ca"
+            ></textarea>
+          </div>
+
+          <div class="form-field col-lg-12 text-center">
+            <input onclick="fillform()" class="submit-btn" type="submit" value="Submit" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- HIDDEN FORM -------------------- -->
+    <form
+      name="postform"
+      id="postform"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <input name="title" id= "title" type="hidden">
+      <input name="place" id= "place" type="hidden">
+      <input name="duration" id= "duration" type="hidden">
+      <input name="stipend" id= "stipend" type="hidden">
+      <input name="apply_by" id= "apply_by" type="hidden">
+      <input name="no_of_openings" id= "no_of_openings" type="hidden">
+      <input name="perks" id= "perks" type="hidden">
+      <input name="skills" id= "skills" type="hidden">
+      <input name="about_internship" id= "about_internship" type="hidden">
+      <input name="who_can_apply" id= "who_can_apply" type="hidden">
+    </form>
+
+    <!-- -------------------- FOOTER SECTION -------------------- -->
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- <img src="images/logo.png" class="footer-logo"> -->
+            <h2>SimpleHired</h2>
+            <p style="text-align: justify">
+              SimplyHired helps thousands of students find great internships and
+              be a ladder in their success.
+            </p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Features</h1>
+            <p>Certification</p>
+            <p>Free Apply</p>
+            <p>Flexible Time</p>
+            <p>Jobs for freshers</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Quick Contact</h1>
+            <p>
+              <i class="fa fa-phone-square"></i>
+              +91 7377515257
+            </p>
+            <p>
+              <i class="fa fa-envelope"></i>
+              ankit4b@gmail.com
+            </p>
+            <p>
+              <i class="fa fa-home"></i>
+              Tulsinagar, Balangir
+            </p>
+            <p class="city">Odisha, India</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Follow Us On</h1>
+            <p>
+              <i class="fa fa-facebook-official"></i>
+              Facebook
+            </p>
+            <p>
+              <i class="fa fa-youtube-play"></i>
+              Youtube
+            </p>
+            <p>
+              <i class="fa fa-linkedin"></i>
+              Linkedin
+            </p>
+            <p>
+              <i class="fa fa-twitter"></i>
+              Twitter
+            </p>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">
+          Made with <i class="fa fa-heart-o"></i> by Ankit Sahu
+        </p>
+      </div>
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        $(".mul-select").select2({
+          placeholder: "select skills", //placeholder
+          tags: true,
+          tokenSeparators: ["/", ",", ";", " "],
+        });
+      });
+
+      function validateForm() {
+        var x = $(".mul-select").select2("val");
+        return x;
+      }
+
+      function fillform(){
+          document.getElementById("title").value=document.getElementById("ititle").value;
+          document.getElementById("place").value="BBSR";
+          document.getElementById("duration").value="2 months";
+          document.getElementById("stipend").value=document.getElementById("istipend").value;
+          document.getElementById("apply_by").value=document.getElementById("company").value;
+          document.getElementById("no_of_openings").value=document.getElementById("openings").value;
+          document.getElementById("perks").value=document.getElementById("iperks").value;
+          document.getElementById("place").value=document.getElementById("iplace").value;
+          document.getElementById("skills").value= validateForm() ;
+          document.getElementById("about_internship").value=document.getElementById("iabout_internship").value;
+          document.getElementById("who_can_apply").value=document.getElementById("iwho_can_apply").value;
+
+          document.getElementById("postform").submit();
+
+      }
+    </script>
+  </body>
+</html>

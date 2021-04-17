@@ -1,0 +1,494 @@
+{% load static %}
+<html>
+  <head>
+    <title>Student Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/StudentHomePage.css' %}" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="py-1 fixed-top" style="background-color: rgb(1, 23, 51)">
+      <nav class="navbar navbar-expand-sm navbar-light mx-4">
+        <!-- Brand/logo -->
+        <a
+          class="navbar-brand"
+          href="{% url 'internships' %}"
+          style="
+            font-size: 25px;
+            font-weight: 400;
+            color: #e7e9ee;
+            letter-spacing: 2px;
+            margin-left: 10px;
+            text-transform: uppercase;
+          "
+          >SimplyIntern</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars" aria-hidden="true" style="color: #fff;"></i>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'internships' %}">
+                <i class="fa fa-info" aria-hidden="true"></i> <span style="margin-left: 3px;">Internships</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">
+                <i class="fa fa-pie-chart" aria-hidden="true"></i> <span style="margin-left: 3px;">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">
+                <i class="fa fa-user" aria-hidden="true"></i> Hey, {{user.student.name}}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="btn" href="/logout" style="padding: 5px; background-color: rgb(212, 51, 51); color: #fff; font-weight: 600; border-radius: 5px; font-size: 13px; margin-top: 5px;">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+<!--    {% if messages %} {% for message in messages %}-->
+<!--    <div class="alert info">-->
+<!--      <div class="closebtn">&times;</div>-->
+<!--      {{ message }}-->
+<!--    </div>-->
+<!--    {% endfor %} {% endif %}-->
+
+
+
+ <!-- --------------- Internships to be redesigned---------------- -->
+    <section style="margin-top: 80px">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3 p-3" >
+            <div class="text-center" id="filter-icon">
+              <i class="fa fa-filter" aria-hidden="true" style="font-size: 25px;"></i>
+            </div>
+
+            <div
+              class="p-3"
+              id="filter"
+            >
+              <aside>
+                <h5>Category</h5>
+                <div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="starting"
+                      id="starting"
+                    /><label for="starting">BigData</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="reserves"
+                      id="reserves"
+                    /><label for="reserves">Machine Learning</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="reserves"
+                      id="reserves"
+                    /><label for="reserves">Web development</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="reserves"
+                      id="reserves"
+                    /><label for="reserves">C++</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="reserves"
+                      id="reserves"
+                    /><label for="reserves">Python</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="reserves"
+                      id="reserves"
+                    /><label for="reserves">Marketing</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="startingReserves"
+                      value="reserves"
+                      id="reserves"
+                    /><label for="reserves">Mobile Application</label>
+                  </div>
+                </div>
+                <h5>Location</h5>
+                <div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Bhubaneswar</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Bangalore</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Hyderabad</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Chennai</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Mumbai</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Delhi</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="injured"
+                      value="injured"
+                      id="injured"
+                    /><label for="injured">Noida</label>
+                  </div>
+                </div>
+                <h5>Desired minimum monthly stipend (₹)</h5>
+                <div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="position"
+                      value="guard"
+                      id="guard"
+                    /><label for="guard">0 - 2k</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="position"
+                      value="forward"
+                      id="forward"
+                    /><label for="forward">2k - 4k</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="position"
+                      value="center"
+                      id="center"
+                    /><label for="center">4k - 6k</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="position"
+                      value="center"
+                      id="center"
+                    /><label for="center">6k - 8k</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="position"
+                      value="center"
+                      id="center"
+                    /><label for="center">8k - 10k</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="position"
+                      value="center"
+                      id="center"
+                    /><label for="center">10k+ </label>
+                  </div>
+                </div>
+                <h5>Max. duration (months)</h5>
+                <div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="east"
+                      id="east"
+                    /><label for="east">1 Month</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="west"
+                      id="west"
+                    /><label for="west">2 Months</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="west"
+                      id="west"
+                    /><label for="west">3 Months</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="west"
+                      id="west"
+                    /><label for="west">4 Months</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="west"
+                      id="west"
+                    /><label for="west">5 Months</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="west"
+                      id="west"
+                    /><label for="west">6 Months</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="conference"
+                      value="west"
+                      id="west"
+                    /><label for="west">12 Months</label>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+          <div class="col-md-6">
+
+            <div class="container-fluid">
+            {% for post in posts %}
+              <div>
+                    <div class="p-3 my-5" style="width: 100%; margin: auto; box-shadow: 0 8px 15px 0px rgba(0, 0, 0, 0.1); background-color: #fff;" >
+                        <div class="row">
+                            <div class="col-md-6 col-6">
+                                <h5 class="title" style="color: #002b70;">
+                                    {{post.title}}
+                                </h5>
+                            </div>
+                            <div class="col-md-6 col-6">
+                                <img src="/media/{{post.company.profile.pic}}" alt="Company Name" style="width: 35px; height: 35px; float: right;" />
+                            </div>
+                        </div>
+                        
+                        <div class="text-center my-2">
+                            <p style="color: #033f8d;">
+                                <i class="fa fa-home" aria-hidden="true"></i>  {{post.place}}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> <span style=" font-weight: 600;">  START DATE </span>
+                                <br>
+                                    Immediately
+                                </P>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span style=" font-weight: 600;">  DURATION </span> 
+                                <br>
+                                    {{post.duration}}
+                                </P>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-money" aria-hidden="true"></i> <span style=" font-weight: 600;">  STIPEND </span>  
+                                <br>
+                                    Rs. {{post.stipend}}/month
+                                </P>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-hourglass-half" aria-hidden="true"></i> <span style=" font-weight: 600;">  Apply By </span>  
+                                <br>
+                                    16th March 21
+                                </P>
+                            </div>
+                        </div>
+                        <div class="mb-5 mt-3">
+                            <h6 style="float: right; margin-right: 20px;  color: #a72879; font-weight: bold;">
+                                <a href="{% url 'detail' post.id %}" style="text-decoration: none; color: #2B5EC4;">View Details</a>
+                              <i class="fa fa-chevron-right" aria-hidden="true" style="color: #2B5EC4;"></i>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                
+            {% endfor %}
+            </div>
+      
+          </div>
+          <div class="col-md-3">
+            <div class="text-center">
+              <img
+                src="{% static '/images/google_ads.png' %}"
+                style="width: 80%; margin: auto; margin-top: 50px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- FOOTER SECTION -------------------- -->
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- <img src="images/logo.png" class="footer-logo"> -->
+            <h2>SimpleHired</h2>
+            <p style="text-align: justify">
+              SimplyHired helps thousands of students find great internships and
+              be a ladder in their success.
+            </p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Features</h1>
+            <p>Certification</p>
+            <p>Free Apply</p>
+            <p>Flexible Time</p>
+            <p>Jobs for freshers</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Quick Contact</h1>
+            <p>
+              <i class="fa fa-phone-square"></i>
+              +91 7377515257
+            </p>
+            <p>
+              <i class="fa fa-envelope"></i>
+              ankit4b@gmail.com
+            </p>
+            <p>
+              <i class="fa fa-home"></i>
+              Tulsinagar, Balangir
+            </p>
+            <p class="city">Odisha, India</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Follow Us On</h1>
+            <p>
+              <i class="fa fa-facebook-official"></i>
+              Facebook
+            </p>
+            <p>
+              <i class="fa fa-youtube-play"></i>
+              Youtube
+            </p>
+            <p>
+              <i class="fa fa-linkedin"></i>
+              Linkedin
+            </p>
+            <p>
+              <i class="fa fa-twitter"></i>
+              Twitter
+            </p>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">
+          Made with <i class="fa fa-heart-o"></i> by Ankit Sahu
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

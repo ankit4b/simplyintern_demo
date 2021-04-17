@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+body
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa !important;
+}
+
+.navbar-nav li a
+{ 
+    color: #ffffff !important;
+    font-size: 16px;
+    margin-right: 25px;
+}
+
+
+/* ------------- Content --------------  */
+
+#content .title
+{
+    text-transform: capitalize;
+    text-align: left;
+    letter-spacing: 3px;
+    font-size: 1.7em;
+    color: #5543ca;
+    background: linear-gradient(to right, #f4524d 0%, #5543ca 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* -------------- Footer Section --------------- */
+
+#footer{
+    margin-top: 80px;
+    padding: 70px;
+    background-color: #efefef;
+    color: #013f7e;
+}
+
+.footer-logo{
+    width: 150px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+#footer h2{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+#footer h1{
+    font-size: 15px;
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#footer p{
+    font-size: 12px;
+    text-align: left;
+}
+
+#footer .city{
+    margin-left: 37px;
+}
+
+#footer .row .fa{
+    padding-right: 20px;
+    font-size: 15px;
+}
+
+#footer hr{
+    margin-top: 10px;
+}
+
+#footer .fa-heart-o{
+    color: red;
+    font-size: 17px;
+}
+
+#footer .copyright{
+    margin-bottom: -80px;
+    text-align: center;
+    font-size: 15px;
+}
+

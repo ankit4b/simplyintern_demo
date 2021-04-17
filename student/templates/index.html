@@ -1,0 +1,498 @@
+{% load static %}
+<html>
+  <head>
+    <title>SimplyHired</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% comment %}
+    <style>
+      {% include "css/Home.css" %}
+    </style>
+    {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="./static/WOW-master/css/libs/animate.css" />
+  </head>
+  <body>
+    <!-- -------------------------Header---------------------- -->
+    <section id="header">
+      <nav class="navbar navbar-light">
+        <a
+          class="navbar-brand"
+          href="#"
+          style="
+            font-size: 40;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 3px;
+          "
+        >
+          SimplyHired
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#top"
+                >HOME <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">SERVICES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">FEATURES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">REVIEWS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">CONTACT US</a>
+            </li>
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+              <a href="/" style="color:#fff;">Hey, {{user.first_name}}</a>
+              {% else %}
+              Hey, guest user
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              <a href='logout'>LOGOUT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+
+    <!-- ---------- WELCOME TEXT -------------- -->
+
+    <section>
+      <div class="container">
+        <div class="welcome text-center wow animate__fadeInDown">
+          <h1
+            class="animate__animated animate__bounce"
+            style="font-weight: bold; letter-spacing: 1px"
+          >
+            SimplyHired
+          </h1>
+          <p>
+            SimplyHired helps thousands of students find great internships
+            <br />
+            and be a ladder in their success.
+          </p>
+          <a href="internships" class="btn home-btn"> Get Started </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------- ABOUT SECTION ----------- -->
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center wow slideInLeft">
+            <div class="w-75 m-auto">
+              <img
+                src="{% static 'images/student_vector_image.jpg' %}"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-md-6 wow slideInRight">
+            <h3 class="text-center">Benefits of a Student</h3>
+            <ul class="ml-5">
+              <li>Gain valuable work experience</li>
+              <li>Explore a career path</li>
+              <li>Give yourself an edge in the job market</li>
+              <li>Develop and refine skills</li>
+              <li>Receive financial compensation</li>
+              <li>Network with professionals in the field</li>
+              <li>Gain confidence</li>
+              <li>Transition into a job</li>
+            </ul>
+            <div style="text-align: center">
+            {% if user.is_authenticated %}
+              {% if user.student.isStudent %}
+              <a class="btn home-btn" href="/internships">
+                Open as Student
+              </a>
+              {% else %}
+              <a class="btn home-btn" href="/">
+                Open as Student
+              </a>
+              {% endif %}
+
+            {% else %}
+              <a class="btn home-btn" href="/auth-student">
+                Open as Student
+              </a>
+            {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6 wow slideInLeft">
+            <h3 class="text-center">Benefits of a Company</h3>
+            <ul class="ml-5">
+              <li>Discover New (And Hidden) Talent</li>
+              <li>Reduce Overall Employee Workload</li>
+              <li>Management Practice for Senior Employees</li>
+              <li>Social Media Management & Latest Trends</li>
+              <li>Minimal Costs for Internship Programs</li>
+              <li>Increase Productivity and Retention</li>
+            </ul>
+            <div style="text-align: center">
+            {% if user.is_authenticated %}
+
+              {% if user.company.isCompany %}
+              <a class="btn home-btn" href="/cmp/">
+                Open as Company
+              </a>
+              {% else %}
+              <a class="btn home-btn" href="/">
+                Open as Company
+              </a>
+              {% endif %}
+
+            {% else %}
+              <a class="btn home-btn" href="/cmp/auth-company">
+                Open as Company
+              </a>
+            {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6 wow slideInRight">
+            <div class="w-75 m-auto">
+              <img src="{% static 'images/company.jpg' %}" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------SERVICE----------------- -->
+
+    <section class="service" id="services">
+      <div class="content-box pb-3">
+        <div class="container">
+          <h1>Our Service</h1>
+          <div class="row services mb-5">
+            <div class="col-md-4 text-centr">
+              <div class="icon">
+                <i class="fa fa-renren"></i>
+              </div>
+              <h3>Our <span>Mission</span></h3>
+              <p>
+                "At SimpleHired , our mission is to provide a seamless facility
+                which helps to meet current requirements of students searching
+                for internships/jobs and corporate by reducing the time of
+                hiring."
+              </p>
+            </div>
+            <div class="col-md-4 text-centr">
+              <div class="icon">
+                <i class="fa fa-user"></i>
+              </div>
+              <h3>Our <span>Vision</span></h3>
+              <p>
+                "To be a global leader in education domain and help students to
+                achieve their success by finding the wonderful opportunities on
+                SimpleHired platform to land their into dream carrier."
+              </p>
+            </div>
+            <div class="col-md-4 text-centr">
+              <div class="icon">
+                <i class="fa fa-meetup"></i>
+              </div>
+              <h3>Our <span>Goal</span></h3>
+              <p>
+                "At SimpleHired , We’ve built a culture of trust . InternIn
+                always believe in ‘Learning By Doing’ . Our culture makes us one
+                of the most innovative , admired and most dedicated . These our
+                values connect and inspire us."
+              </p>
+            </div>
+          </div>
+
+          <hr
+            class="w-50 m-auto mt-5"
+            style="background-color: #ff4d73; opacity: 0.5"
+          />
+          <div class="row mt-5">
+            <div class="col-md-3 p-3">
+              <div>
+                <h3>Total Students</h3>
+              </div>
+              <div>
+                <p style="text-align: center; font-weight: bold; font-size: 25">
+                  1250
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 p-3">
+              <div>
+                <h3>Total Companies</h3>
+              </div>
+              <div>
+                <p style="text-align: center; font-weight: bold; font-size: 25">
+                  300
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 p-3">
+              <div>
+                <h3>Total Internships</h3>
+              </div>
+              <div>
+                <p style="text-align: center; font-weight: bold; font-size: 25">
+                  720
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 p-3">
+              <div>
+                <h3>Total Jobs</h3>
+              </div>
+              <div>
+                <p style="text-align: center; font-weight: bold; font-size: 25">
+                  50
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ------------ FEATURES --------------- -->
+    >
+    <section id="features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 wow animate__fadeInLeft">
+            <img
+              src="{% static 'images/—Pngtree—young guy programmer freelancer working_5369036.png'%}"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-6 wow fadeInDown">
+            <div class="feature-box">
+              <div class="feature-left">
+                <i class="fa fa-check-square-o"></i>
+              </div>
+              <div class="feature-right">
+                <h4>Free Apply</h4>
+                <p class="text-justify mb-3">
+                  "The only way to do great work is to love what you do. If you
+                  haven’t found it yet, keep looking. Don’t settle. As with all
+                  matters of the heart, you’ll know when you find it."
+                </p>
+              </div>
+            </div>
+            <div class="feature-box">
+              <div class="feature-left">
+                <i class="fa fa-trophy"></i>
+              </div>
+              <div class="feature-right">
+                <h4>Certification</h4>
+                <p class="text-justify mb-3">
+                  "My advice for young people is, study what you love and intern
+                  in what you want to do. And I think it’s okay to pivot as many
+                  times as you need to."
+                </p>
+              </div>
+            </div>
+            <div class="feature-box">
+              <div class="feature-left">
+                <i class="fa fa-clock-o"></i>
+              </div>
+              <div class="feature-right">
+                <h4>Flexible Time</h4>
+                <p class="text-justify mb-3">
+                  "Everyone wants to be a stylist. If you know that’s your
+                  calling, then you need to intern as much as humanly possible."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------- SUBSCRIBER --------------- -->
+
+    <section id="subscriber" class="mt-5">
+      <div class="container">
+        <div class="subscriber text-center wow fadeInUp">
+          <h3>Join for Free and get ontime updates</h3>
+          <p>Subscribe Our Newsletters</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Email id" />
+            <div class="input-group-append">
+              <button type="submit" class="input-group-text btn">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- FOOTER SECTION -------------------- -->
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- <img src="images/logo.png" class="footer-logo"> -->
+            <h2>SimpleHired</h2>
+            <p style="text-align: justify">
+              SimplyHired helps thousands of students find great internships and
+              be a ladder in their success.
+            </p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Features</h1>
+            <p>Certification</p>
+            <p>Free Apply</p>
+            <p>Flexible Time</p>
+            <p>Jobs for freshers</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Quick Contact</h1>
+            <p>
+              <i class="fa fa-phone-square"></i>
+              +91 7377515257
+            </p>
+            <p>
+              <i class="fa fa-envelope"></i>
+              ankit4b@gmail.com
+            </p>
+            <p>
+              <i class="fa fa-home"></i>
+              Tulsinagar, Balangir
+            </p>
+            <p class="city">Odisha, India</p>
+          </div>
+
+          <div class="col-md-3">
+            <h1>Follow Us On</h1>
+            <p>
+              <i class="fa fa-facebook-official"></i>
+              Facebook
+            </p>
+            <p>
+              <i class="fa fa-youtube-play"></i>
+              Youtube
+            </p>
+            <p>
+              <i class="fa fa-linkedin"></i>
+              Linkedin
+            </p>
+            <p>
+              <i class="fa fa-twitter"></i>
+              Twitter
+            </p>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">
+          Made with <i class="fa fa-heart-o"></i> by Ankit Sahu
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ------------------ Animation ------------------ -->
+    <script src="{% static 'WOW-master/dist/wow.js'%}"></script>
+    <script>
+      wow = new WOW({
+        animateClass: "animated",
+        offset: 100,
+        callback: function (box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">");
+        },
+      });
+      wow.init();
+      document.getElementById("moar").onclick = function () {
+        var section = document.createElement("section");
+        section.className = "section--purple wow fadeInDown";
+        this.parentNode.insertBefore(section, this);
+      };
+    </script>
+
+    <!-- ------------------ SMOOTH SCROLLING ------------------ -->
+    <script src="{% static 'js/smooth-scroll.js'%}"></script>
+
+    <script>
+      var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
+
+  <!-- ------------------ TOASTY MESSAGES ------------------ -->
+    <script>
+     var close = document.getElementsByClassName("closebtn");
+      var i;
+
+      for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+          var div = this.parentElement;
+          div.style.opacity = "0";
+          setTimeout(function () {
+            div.style.display = "none";
+          }, 600);
+        };
+      }
+
+
+    </script>
+  </body>
+</html>

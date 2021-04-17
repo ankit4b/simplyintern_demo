@@ -1,0 +1,8 @@
+    A New internship is waiting for you....
+
+    Hey, {{name}}
+    A new internship is posted.
+
+    <a href="{{ link }}"> click here</a>
+    Simply intern team.
+    Happy learning!!!

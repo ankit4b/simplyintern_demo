@@ -1,0 +1,283 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>
+            Student Section
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/StudentCompanyViewDetails.css' %}" >
+
+         <!-- Bootstrap -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+         <!-- Font-awesome -->
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         
+         <link rel="preconnect" href="https://fonts.gstatic.com">
+         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body >
+        
+        <section class="py-1 fixed-top" style="background-color: rgb(1, 23, 51)">
+      <nav class="navbar navbar-expand-sm navbar-light mx-4">
+        <!-- Brand/logo -->
+        <a
+          class="navbar-brand"
+          href="{% url 'internships' %}"
+          style="
+            font-size: 25px;
+            font-weight: 400;
+            color: #e7e9ee;
+            letter-spacing: 2px;
+            margin-left: 10px;
+            text-transform: uppercase;
+          "
+          >SimplyIntern</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars" aria-hidden="true" style="color: #fff;"></i>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'internships' %}">
+                <i class="fa fa-info" aria-hidden="true"></i> <span style="margin-left: 3px;">Internships</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">
+                <i class="fa fa-pie-chart" aria-hidden="true"></i> <span style="margin-left: 3px;">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">
+                <i class="fa fa-user" aria-hidden="true"></i> Hey, {{user.student.name}}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="btn" href="/logout" style="padding: 5px; background-color: rgb(212, 51, 51); color: #fff; font-weight: 600; border-radius: 5px; font-size: 13px; margin-top: 5px;">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+         <!-- ----------------- FORM ---------------  -->
+
+         <section class="container get_in_touch" style="margin-top: 100px;">
+            <h1 class="title">
+                {{ post.title }}
+            </h1>
+             <h4 class="text-center" style="letter-spacing: 1px; font-size: 1.3em;color: #037dce; font-weight: bold;">
+                {{ post.company }}
+            </h4>
+
+            <div class="container">
+                        
+                        <div class="text-center my-2">
+                            <p style="color: #033f8d;">
+                                <i class="fa fa-home" aria-hidden="true"></i>  Work From Home
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> <span style=" font-weight: 600;">  START DATE </span>
+                                <br>
+                                    Immediately
+                                </P>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span style=" font-weight: 600;">  DURATION </span> 
+                                <br>
+                                    {{ post.duration }}
+                                </P>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-money" aria-hidden="true"></i> <span style=" font-weight: 600;">  STIPEND </span>  
+                                <br>
+                                    Rs. {{ post.stipend }}/month
+                                </P>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <p style="color: #033f8d;">
+                                    <i class="fa fa-hourglass-half" aria-hidden="true"></i> <span style=" font-weight: 600;">  Apply By </span>  
+                                <br>
+                                    16th March 21
+                                </P>
+                            </div>
+                        </div>
+
+                        <p class="mt-3" style="color: #033f8d;">
+                            <i class="fa fa-users" aria-hidden="true" style="color: #033f8d;"> {{post.no_of_openings}}<span style="padding-left: 5px">Applicants</span></i>
+                        </p>
+                        <hr />
+
+                        <div class="pl-4">
+                            <h5 class="subtitle">
+                                Skills
+                            </h5>
+                            <p>
+                                {{ post.skills }}
+                            </p>
+                        </div>
+
+
+                    <div class="pl-4" id="area">
+                        
+
+                        <div class="mt-4">
+                            <h5 class="subtitle">
+                                About the work from home internship
+                            </h5>
+                            <p>
+                                Selected intern's day-to-day responsibilities include:
+                            </p>
+                        
+                            <ul class="ml-4">
+                                <li>
+                                    {{ post.about_internship }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        
+                    <div class="mt-4">
+                        <h5 class="subtitle">
+                            Who can apply
+                        </h5>
+                        <p>
+                            Only those candidates can apply who:
+                        </p>
+                    
+                        <ul class="ml-4">
+                            <li>
+                                    {{ post.who_can_apply }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h5 class="subtitle">
+                            Perks
+                        </h5>
+                        <p>
+                            {{ post.perks }}
+                        </p>
+                    </div>
+
+
+                    <div class="text-center" style="margin-top: 30px;">
+
+                        {% if status == 0 %}
+                            <a class="btn" style="width: 200px; background-color: rgb(23, 110, 223); color: #fff; font-weight: bold; letter-spacing: 1px;" href="{% url 'internshipApplied' post.id %}">APPLY</a>
+                        {% else %}
+                            <a class="btn" style="width: 200px; background-color: rgb(240, 245, 255); color: rgb(23, 110, 223); font-weight: bold; letter-spacing: 1px; border: 1px solid rgb(0, 10, 150)" href="{% url 'internshipApplied' post.id %}">Applied</a>
+                        {% endif %}
+
+
+
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        
+
+        <!-- -------------------- FOOTER SECTION -------------------- -->
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- <img src="images/logo.png" class="footer-logo"> -->
+                    <h2>
+                        SimpleHired
+                    </h2>
+                    <p style="text-align: justify;">
+                    SimplyHired helps thousands of students find great internships
+                    and be a ladder in their success.
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h1>
+                        Features
+                    </h1>
+                    <p>
+                        Certification
+                    </p>
+                    <p>
+                        Free Apply
+                    </p>
+                    <p>
+                        Flexible Time
+                    </p>
+                    <p>
+                        Jobs for freshers
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h1>
+                        Quick Contact
+                    </h1>
+                    <p> <i class="fa fa-phone-square"></i>
+                        +91 7377515257
+                    </p>
+                    <p> <i class="fa fa-envelope"></i>
+                        ankit4b@gmail.com
+                    </p>
+                    <p> <i class="fa fa-home"></i>
+                        Tulsinagar, Balangir
+                    </p>
+                    <p class="city">
+                        Odisha, India
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h1>
+                        Follow Us On
+                    </h1>
+                    <p> <i class="fa fa-facebook-official"></i>
+                        Facebook
+                    </p>
+                    <p> <i class="fa fa-youtube-play"></i>
+                        Youtube
+                    </p>
+                    <p> <i class="fa fa-linkedin"></i>
+                        Linkedin
+                    </p> 
+                    <p> <i class="fa fa-twitter"></i>
+                        Twitter
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">
+                Made with <i class="fa fa-heart-o"></i> by Ankit Sahu
+            </p>
+        </div>
+    </section>
+
+
+
+    </body>
+</html>
