@@ -211,6 +211,9 @@ def post_detail(request, post_id):
 
     return render(request, 'CompanyInternshipDetails.html',{'post': post, 'company': comp, 'applied':applied})
 
+
+from django.core.mail import EmailMessage
+
 def acceptStd(request, post_id, a_id):
     internship = InternshipAppliedDB.objects.get(id = a_id)
 
@@ -228,9 +231,17 @@ def acceptStd(request, post_id, a_id):
     draw.text(xy=(403, 421), text='{}'.format(name), fill=(0, 0, 0), font=font)
     draw.text(xy=(785, 500), text='{}'.format(post.title), fill=(0, 0, 0), font=ImageFont.truetype('arial.ttf', 25))
     draw.text(xy=(154, 649), text='{}'.format(post.company), fill=(0, 0, 0), font=font)
+
     img_name=name+post.title
-    img.save('{}.png'.format(img_name))
-    print(img)
+    img.save('media\student\certificates\{}.png'.format(img_name))
+
+    path=('student\certificates\{}.png'.format(img_name))
+
+    internship.certificate = path
+    internship.save()
+
+    print(internship.certificate)
+
     #send confirmation mail and certificate
     to=internship.student_email
     send_mail(
@@ -242,6 +253,7 @@ def acceptStd(request, post_id, a_id):
     )
 
     return redirect('post-detail', post_id = post_id)
+
 
 def rejectStd(request, post_id, a_id):
     internship = InternshipAppliedDB.objects.get(id=a_id)

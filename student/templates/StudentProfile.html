@@ -135,6 +135,7 @@
 
             <!-- ------------- EDUCATION ------------  -->
 
+            <!--
             <div class="mt-4" style="width: 85%; margin: auto;">
                 <h3 class="title">
                     Current Education
@@ -163,170 +164,58 @@
                     </div>
                 </div>
             </div>
-            <!-- ------------- INTERNSHIP EXPERIENCE ------------  -->
+            -->
 
-            <div class="mt-5" style="width: 85%; margin: auto;">
-                <h3 class="title">
-                    Internship Experience
-                </h3>
-                <hr>
-                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
-                    <div class="row">
-                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
-                            <img src="{% static './images/wipro.jpg' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6 style="font-size: large; font-weight: bold;" >
-                                The SmartBridge internship
-                            </h6>
-                            <p>
-                                May 2020 - June 2020
-                            </p>
-                            <p style="font-weight: bold; font-size: 15;">
-                                Dates attended or expected graduation
-                            </p>
-                            <p>
-                                2018 – 2021
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
-                    <div class="row">
-                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
-                            <img src="{% static './images/Accenture-acn-mobile-logo-2.png' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6 style="font-size: large; font-weight: bold;" >
-                                The SmartBridge internship
-                            </h6>
-                            <p>
-                                May 2020 - June 2020
-                            </p>
-                            <p style="font-weight: bold; font-size: 15;">
-                                Dates attended or expected graduation
-                            </p>
-                            <p>
-                                2018 – 2021
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
-                    <div class="row">
-                        <div id="college" class="col-md-3 d-flex justify-content-center align-items-center">
-                            <img src="{% static './images/tata.png' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6 style="font-size: large; font-weight: bold;" >
-                                The SmartBridge internship
-                            </h6>
-                            <p>
-                                May 2020 - June 2020
-                            </p>
-                            <p style="font-weight: bold; font-size: 15;">
-                                Dates attended or expected graduation
-                            </p>
-                            <p>
-                                2018 – 2021
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             <!-- ------------- Certification EXPERIENCE ------------  -->
 
             <div class="mt-4" style="width: 85%; margin: auto; ">
-                <h3 class="title">
-                    Certification
-                </h3>
+                <div>
+                    <h3 class="title" style="display: inline;">
+                        Certification
+                    </h3>
+                    <a href="{% url 'StudentCertificateAdd' %}" style="text-decoration: none;">
+                        <i class="fa fa-plus" aria-hidden="true" style="float: right; font-size: 15px; color: #fff;  margin-top: 10px; margin-right: 10px;  border: 1px solid #eee; padding: 8px; background-color: 7737ec; border-radius: 15px;">
+                            <span style="margin-left: 5px;">Add New Certificate</span>
+                        </i>
+                    </a>
+                </div>
                 <hr>
-                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
-                    <div class="row">
-                        <div id="certification" class="col-md-3 d-flex justify-content-center align-items-center">
-                            <img src="{% static './images/wipro.jpg' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6 style="font-size: large; font-weight: bold;" >
-                                ProblemSolving (Basic)
-                            </h6>
-                            <p>
-                                HackerRank
-                            </p>
-                            <p>
-                                Issued Fab 2021 - No Expiration Date
-                            </p>
-                            <p class="color: #555">
-                                Credential ID : UC-57854fd513-b4654-456-sa54654
-                            </p>
-                            <a href="#">
-                                See Credential
-                            </a>
 
-                        </div>
-                    </div>
-                </div>
+                {% for c in certificate %}
 
                 <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
                     <div class="row">
                         <div id="certification" class="col-md-3 d-flex justify-content-center align-items-center">
-                            <img src="{%static './images/Accenture-acn-mobile-logo-2.png' %}">
+<!--                            <img src="{% static './images/tata.png' %}">-->
+                            <div style="border: 1px solid #777; padding: 40px; border-radius: 10px;">
+                                <h4>
+                                   {{  c.company_name }}
+                                </h4>
+                            </div>
                         </div>
+
                         <div class="col-md-9">
                             <h6 style="font-size: large; font-weight: bold;" >
-                                ProblemSolving (Basic)
+                                {{ c.title }}
                             </h6>
                             <p>
-                                HackerRank
-                            </p>
-                            <p>
-                                Issued Fab 2021 - No Expiration Date
+                                Certification Year :  {{ c.complition_year }}
                             </p>
                             <p class="color: #555">
-                                Credential ID : UC-57854fd513-b4654-456-sa54654
+                                Credential ID : {{ c.credential }}
                             </p>
-                            <a href="#">
-                                See Credential
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-3 mb-3" style="box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1); background-color: #fff;  border: 1px solid #ddd; border-radius: 20px;">
-                    <div class="row">
-                        <div id="certification" class="col-md-3 d-flex justify-content-center align-items-center">
-                            <img src="{% static './images/tata.png' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6 style="font-size: large; font-weight: bold;" >
-                                ProblemSolving (Basic)
-                            </h6>
-                            <p>
-                                HackerRank
-                            </p>
-                            <p>
-                                Issued Fab 2021 - No Expiration Date
-                            </p>
-                            <p class="color: #555">
-                                Credential ID : UC-57854fd513-b4654-456-sa54654
-                            </p>
-                            <a href="#">
-                                See Credential
+                            <a href="{{ c.certificate_file.url }}">
+                                View Certificate
                             </a>
                             
                         </div>
                     </div>
                 </div>
+
+                {% endfor %}
+
             </div>
+
         </div>
     </div>
         

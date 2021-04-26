@@ -10,5 +10,6 @@ urlpatterns = [
     path('auth-student', views.auth_student, name='auth_student'),
     path('profile', views.profile, name='profile'),
     path('profileEdit', views.profileEdit, name='profileEdit'),
+    path('StudentCertificateAdd', views.StudentCertificateAdd, name='StudentCertificateAdd'),
     path('dashboard', views.dashboard, name='dashboard'),
 ]

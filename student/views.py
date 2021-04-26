@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse , JsonResponse
-from .models import Student, Resume
+from .models import Student, Resume, Certificate
 from company.models import Company, Internship, InternshipAppliedDB
 from django.contrib import messages
  
@@ -105,7 +105,8 @@ def auth_student(request):
 def profile(request):
     std = request.user.student
     resume = std.resume
-    return render(request, 'StudentProfile.html', {'resume':resume, 'student':std})
+    certificate = Certificate.objects.filter(std_id = request.user.pk).order_by('-id')
+    return render(request, 'StudentProfile.html', {'resume':resume, 'student':std, 'certificate': certificate})
 
 @login_required
 def profileEdit(request):
@@ -209,3 +210,27 @@ def internshipApplied(request, post_id):
     # return redirect('/internships')
     return redirect('detail', post_id=post_id)
 
+def StudentCertificateAdd(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        company = request.POST.get('company')
+        cyear = request.POST.get('cyear')
+        credential = request.POST.get('credential')
+
+        print(title)
+        print(company)
+        print(cyear)
+        print(credential)
+        print(request.user.pk)
+
+        new_certificate = Certificate(std_id = request.user.pk, title = title, company_name= company, complition_year= cyear, credential= credential )
+        new_certificate.save()
+
+        if 'Certificate_file' in request.FILES:
+            new_certificate.certificate_file = request.FILES['Certificate_file']
+            new_certificate.save()
+
+        return redirect("profile")
+
+    else:
+        return render(request, 'StudentCertificateAdd.html')

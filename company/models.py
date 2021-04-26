@@ -84,5 +84,7 @@ class InternshipAppliedDB(models.Model):
     matching = models.DecimalField(default=True, null=True, max_digits=5, decimal_places=2)
     status = models.CharField(max_length=30, default="pending")
 
+    certificate = models.ImageField(upload_to="student/certificate/", blank=True, null=True)
+
     def __str__(self):
         return str(self.internship_id)

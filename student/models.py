@@ -35,3 +35,18 @@ class Resume(models.Model):
         managed = True
         verbose_name = 'Resume'
         verbose_name_plural = 'Resumes'
+
+
+class Certificate(models.Model):
+    objects = models.Manager()
+    id = models.AutoField(primary_key=True)
+    std_id = models.IntegerField()
+
+    title = models.CharField(max_length=1000, blank=True, null=True)
+    company_name = models.CharField(max_length=1000, blank=True, null=True)
+    complition_year = models.IntegerField()
+    credential = models.CharField(max_length=100, blank=True, null=True)
+    certificate_file = models.FileField(upload_to="student/certificate/", blank=True, null=True)
+
+    def __str__(self):
+        return self.title
