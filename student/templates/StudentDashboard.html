@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>
-            Company Home Page
+            Student Home Page
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'css/StudentDashboard.css' %}" >
@@ -90,28 +90,36 @@
                     </h3>
                     <hr style="background-color: rgb(233, 221, 221);" />
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <h5>
                                 Total internship Applied
                             </h5>
                             <p>
-                                18
+                                {{applied}}
                             </p>
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <h5>
-                                Internship Accepted
+                                Pending
                             </h5>
                             <p>
-                                8
+                                {{pending}}
                             </p>
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <h5>
-                                Internship Rejected
+                                Accepted
                             </h5>
                             <p>
-                                10
+                                {{accepted}}
+                            </p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <h5>
+                                Rejected
+                            </h5>
+                            <p>
+                                {{rejected}}
                             </p>
                         </div>
                     </div>
@@ -119,22 +127,24 @@
 
             </div>
 
+
+            {% for post in posts %}
                 <div>
                     <div class="p-3 my-5" style="width: 80%; margin: auto; border-radius: 10px; box-shadow: 0 8px 15px 0px rgba(0, 0, 0, 0.1); background-color: #fff;" >
                         <div class="row">
                             <div class="col-md-6 col-6">
                                 <h5 class="title">
-                                    Web development
+                                    {{post.internship.company.name}}-{{post.internship.title}}
                                 </h5>
                             </div>
                             <div class="col-md-6 col-6 text-center">
-                                <img src="{%static './images/tata.png' %}" alt="Company Name" style="width: 35px; height: 35px; float: right;" />
+                                <img src="/media/{{post.internship.company.profile.pic}}" alt="Company Name" style="width: 35px; height: 35px; float: right;" />
                             </div>
                         </div>
 
                         <div class="text-center my-3">
                             <p style="color: #748dad;">
-                                <i class="fa fa-home" aria-hidden="true"></i>  Work From Home
+                                <i class="fa fa-home" aria-hidden="true"></i>  {{post.internship.place}}
                             </p>
                         </div>
                         <div class="row">
@@ -144,123 +154,36 @@
 
                                     </span>
                                 <br>
-                                    16th March 21
+                                    {{post.applied_on}}
                                 </P>
                             </div>
                             <div class="col-md-4 col-6 text-center">
                                 <p style="color: #033f8d;">
                                    <span style=" font-weight: 600;">  Application Status </span>
                                 <br>
-                                    Selected
+                                    {{post.status}}
                                 </P>
                             </div>
                             <div class="col-md-4 col-6 text-center">
                                 <p style="color: #033f8d;">
                                     <span style=" font-weight: 600;">  Number of applicants </span>
                                 <br>
-                                    52
+                                    {{post.internship.no_of_applicants}}
                                 </P>
+                            </div>
+                            <div>
+                            <h6 style="float: right; margin-right: 20px;  color: #a72879; font-weight: bold;">
+                                <a href="{% url 'detail' post.internshipkey %}" style="text-decoration: none; color: #2B5EC4;">View Details</a>
+                              <i class="fa fa-chevron-right" aria-hidden="true" style="color: #2B5EC4;"></i>
+                            </h6>
                             </div>
 
                         </div>
                     </div>
                 </div>
+            {% endfor %}
 
 
-                <div>
-                    <div class="p-3 my-5" style="width: 80%; margin: auto; border-radius: 10px; box-shadow: 0 8px 15px 0px rgba(0, 0, 0, 0.1); background-color: #fff;" >
-                        <div class="row">
-                            <div class="col-md-6 col-6">
-                                <h5 class="title">
-                                    Web development
-                                </h5>
-                            </div>
-                            <div class="col-md-6 col-6 text-center">
-                                <img src="{%static './images/tata.png' %}" alt="Company Name" style="width: 35px; height: 35px; float: right;" />
-                            </div>
-                        </div>
-
-                        <div class="text-center my-3">
-                            <p style="color: #748dad;">
-                                <i class="fa fa-home" aria-hidden="true"></i>  Work From Home
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 col-6 text-center">
-                                <p style="color: #033f8d;">
-                                     <span style=" font-weight: 600;">  Applied on
-
-                                    </span>
-                                <br>
-                                    16th March 21
-                                </P>
-                            </div>
-                            <div class="col-md-4 col-6 text-center">
-                                <p style="color: #033f8d;">
-                                   <span style=" font-weight: 600;">  Application Status </span>
-                                <br>
-                                    Selected
-                                </P>
-                            </div>
-                            <div class="col-md-4 col-6 text-center">
-                                <p style="color: #033f8d;">
-                                    <span style=" font-weight: 600;">  Number of applicants </span>
-                                <br>
-                                    52
-                                </P>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div>
-                    <div class="p-3 my-5" style="width: 80%; margin: auto; border-radius: 10px; box-shadow: 0 8px 15px 0px rgba(0, 0, 0, 0.1); background-color: #fff;" >
-                        <div class="row">
-                            <div class="col-md-6 col-6">
-                                <h5 class="title">
-                                    Web development
-                                </h5>
-                            </div>
-                            <div class="col-md-6 col-6 text-center">
-                                <img src="{%static './images/tata.png' %}" alt="Company Name" style="width: 35px; height: 35px; float: right;" />
-                            </div>
-                        </div>
-
-                        <div class="text-center my-3">
-                            <p style="color: #748dad;">
-                                <i class="fa fa-home" aria-hidden="true"></i>  Work From Home
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 col-6 text-center">
-                                <p style="color: #033f8d;">
-                                     <span style=" font-weight: 600;">  Applied on
-
-                                    </span>
-                                <br>
-                                    16th March 21
-                                </P>
-                            </div>
-                            <div class="col-md-4 col-6 text-center">
-                                <p style="color: #033f8d;">
-                                   <span style=" font-weight: 600;">  Application Status </span>
-                                <br>
-                                    Selected
-                                </P>
-                            </div>
-                            <div class="col-md-4 col-6 text-center">
-                                <p style="color: #033f8d;">
-                                    <span style=" font-weight: 600;">  Number of applicants </span>
-                                <br>
-                                    52
-                                </P>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
 
 

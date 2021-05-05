@@ -148,7 +148,54 @@ def new_post(request):
             return redirect(auth_company)
 
     return render(request,'CompanyInternshipForm.html')
-    
+
+
+def internship_edit(request, post_id):
+    internship = Internship.objects.get(id = post_id)
+
+    # std = Student.objects.order_by('id')
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            try:
+                if (request.user.company.isCompany == True):
+                    title = request.POST.get('title')
+                    place = request.POST.get('place')
+                    duration = '2 Months'
+                    stipend = request.POST.get('stipend')
+                    apply_by = request.POST.get('apply_by')
+                    no_of_openings = request.POST.get('no_of_openings')
+                    perks = request.POST.get('perks')
+                    skills = request.POST.get('skills')
+                    about_internship = request.POST.get('about_internship')
+                    who_can_apply = request.POST.get('who_can_apply')
+
+                    internship.title = title
+                    internship.duration = duration
+                    internship.place = place
+                    internship.stipend = stipend
+                    internship.apply_by = apply_by
+                    internship.no_of_openings = no_of_openings
+                    internship.perks = perks
+                    internship.skills = skills
+                    internship.about_internship = about_internship
+                    internship.who_can_apply = who_can_apply
+
+                    internship.save()
+
+                    # recommend(skills, std, newPost.id)
+                    return redirect(home)
+            except:
+                print('4 ', request.user, request.user.company.isCompany, request.user.is_authenticated)
+                return redirect(auth_company)
+
+
+        else:
+            print('4 ', request.user, request.user.company.isCompany, request.user.is_authenticated)
+            return redirect(auth_company)
+
+    return render(request, 'CompanyInternshipEdit.html', {'internship' : internship})
+
+
 @login_required
 def company_profile(request):
     cmp = request.user.company
@@ -264,9 +311,6 @@ def rejectStd(request, post_id, a_id):
     return redirect('post-detail', post_id = post_id)
 
 
-
-
-
 def Jaccard(x, y):
     """returns the jaccard similarity between two lists """
     intersection_cardinality = len(set.intersection(*[set(x), set(y)]))
@@ -282,9 +326,6 @@ from django.template.loader import render_to_string
 
 def recommend(cmp_skills,std,id):
     print("recommendation!!!!!----------------------")
-
-
-
 
     print("company skills : " ,cmp_skills)
     x = list(cmp_skills)

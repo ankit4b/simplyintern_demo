@@ -25,17 +25,6 @@ body
 
 /* ----------------------- filter -------------  */
 
-#filter input[type="checkbox"]
-{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#filter label
-{
-    color: #333;
-}
-
 
 
 /* ------------- Content --------------  */
@@ -163,8 +152,6 @@ body
 
 #filter{
         display: block;
-        border-right: solid 1px #ccc;
-        background-color: rgb(233, 238, 255);
 
     }
 #filter-icon{
@@ -174,8 +161,6 @@ body
 @media only screen and (max-width: 767px) {
     #filter{
         display: none;
-        border-right: solid 1px #ccc;
-        background-color: rgb(233, 238, 255);
     }
 
     #filter-icon{

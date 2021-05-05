@@ -5,10 +5,12 @@ from jsonfield import JSONField
 # Create your models here.
 class Student(models.Model):
     objects = models.Manager()
-    user=models.OneToOneField('auth.user',default="", on_delete=models.CASCADE)
+    user = models.OneToOneField('auth.user',default="", on_delete=models.CASCADE)
     name = models.CharField(default="", max_length=128)
     email = models.EmailField()
     isStudent = models.BooleanField(default=True)
+    isVerified = models.BooleanField(default=False)
+    auth_token = models.CharField(default="", max_length=128)
 
     def __str__(self):
         return self.name

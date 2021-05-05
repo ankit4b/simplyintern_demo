@@ -125,8 +125,9 @@
                             <h5 class="title" style="display: inline;">
                                 Resume :
                             </h5>
+                        {% if resume.resume_file %}
                                 <a href="{{ resume.resume_file.url }}">View Resume </a>
-
+                        {% endif %}
                     </div>
                 </div>
             </div>
